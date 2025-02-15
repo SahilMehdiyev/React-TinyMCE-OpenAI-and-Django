@@ -116,7 +116,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+# nginx,s3 -> django-storages,
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'staticfiles'
+]
+
+STATIC_ROOT = BASE_DIR / 'my-cdn'
+if DEBUG:
+    STATIC_ROOT = BASE_DIR.parent / 'local-cdn'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
